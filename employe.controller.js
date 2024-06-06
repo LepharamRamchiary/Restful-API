@@ -45,4 +45,17 @@ export const updateEmployee = async (req, res) => {
     } catch (error) {
         res.status(400).json("Not update the value")
     }
+};
+
+export const deleteEmployee = async (req, res) => {
+    try {
+        const employe = await Employe.findByIdAndDelete(req.params.id);
+        if (!employe) {
+            return res.status(404).json("The id is not valid");
+        } else {
+            res.status(200).json("delete successfully")
+        }
+    } catch (error) {
+        res.status(400).json("Not delete this data")
+    }
 }
