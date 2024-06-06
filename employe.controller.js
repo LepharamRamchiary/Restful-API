@@ -18,4 +18,18 @@ export const getAllData = async (req, res) => {
     } catch (error) {
         res.status(400).json("Not get all data")
     }
+};
+
+export const getSingleData = async (req, res) => {
+    try{
+        const employe = await Employe.findById(req.params.id);
+        if(!employe){
+            res.status(404).json("Not valid id")
+        }else{
+            res.status(200).json(employe);
+        }
+
+    } catch (error){
+        res.status(400).json("Not get any single data from db");
+    }
 }
