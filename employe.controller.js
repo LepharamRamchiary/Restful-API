@@ -10,3 +10,12 @@ export const createEmploye = async (req, res) => {
     }
 };
 
+export const getAllData = async (req, res) => {
+    try {
+        const employe = await Employe.find();
+        res.status(200).json(employe);
+
+    } catch (error) {
+        res.status(400).json("Not get all data")
+    }
+}
